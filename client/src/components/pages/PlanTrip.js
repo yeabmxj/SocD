@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 
+import TripDetails from "./TripDetails.js"
+
 class PlanTrip extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			wearingMask: true,
-			testedNegative: true,
+			wearingMask: false,
+			testedNegative: false,
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,13 +26,14 @@ class PlanTrip extends Component {
 
 	render() {
 		return(
+			<div>
 			<form>
 				<label>
 					Wearing a mask: 
 					<input
 						name = "wearingMask"
-						type = "boolean"
-						value = {this.state.wearingMask}
+						type = "checkbox"
+						checked = {this.state.wearingMask}
 						onChange = {this.handleInputChange} />
 				</label>
 				<br />
@@ -38,11 +41,13 @@ class PlanTrip extends Component {
 					Tested Negative: 
 					<input
 						name = "testedNegative"
-						type = "boolean"
-						value = {this.state.testedNegative}
+						type = "checkbox"
+						checked = {this.state.testedNegative}
 						onChange = {this.handleInputChange} />
 				</label>
 			</form>
+			<TripDetails testedNegative={this.state.testedNegative} wearingMask={this.state.wearingMask} />
+			</div>
 		);
 	}	
 }

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
+import LoginButton from "./pages/LoginButton.js";
 import About from "./pages/About.js";
 import PlanTrip from "./pages/PlanTrip.js";
 import Navbar from "./pages/Navbar.js";
+import TripDetails from "./pages/TripDetails.js";
 
 import "../utilities.css";
 
@@ -21,6 +22,7 @@ class App extends Component {
     super(props);
     this.state = {
       userId: undefined,
+      geoLocation: undefined,
       //infected: undefined,
     };
   }
@@ -53,7 +55,7 @@ class App extends Component {
       <>
         <Navbar/>
         <Router>
-          <Skeleton
+          <LoginButton
             path="/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
@@ -64,6 +66,9 @@ class App extends Component {
           />
           <PlanTrip
             path="/plantrip"
+          />
+          <TripDetails
+            path="/tripdetails"
           />
           <NotFound default />
         </Router>
